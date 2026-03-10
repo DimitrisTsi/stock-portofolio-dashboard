@@ -1,44 +1,51 @@
-async function loadPortfolio() {
-
-try {
+async function loadData(){
 
 const response = await fetch("data/market_data.json")
 const data = await response.json()
 
-console.log(data)
+const container = document.getElementById("charts")
 
-document.getElementById("portfolio_value").innerText =
-"Portfolio Value: $" + data.portfolio_value
+for(const ticker in data){
 
-let html = ""
+const asset = data[ticker]
 
-for (const ticker in data.positions) {
+const canvas = document.createElement("canvas")
+canvas.height = 120
 
-const p = data.positions[ticker]
+const card = document.createElement("div")
+card.className = "card"
 
-html += `
-<div style="margin-bottom:20px">
+const title = document.createElement("h3")
+title.innerText = ticker + " — $" + asset.latest_price
 
-<h3>${ticker}</h3>
+card.appendChild(title)
+card.appendChild(canvas)
 
-Price: ${p.price}<br>
-Shares: ${p.shares}<br>
-Value: ${p.value}<br>
-Daily change: ${p.change_1d}%<br>
-Trend: ${p.trend}
+container.appendChild(card)
 
-</div>
-`
+new Chart(canvas,{
+type:'line',
+data:{
+labels: asset.dates,
+datasets:[{
+label:ticker,
+data: asset.prices,
+borderWidth:2,
+fill:false
+}]
+},
+options:{
+responsive:true,
+plugins:{legend:{display:false}},
+scales:{
+x:{display:false},
+y:{display:true}
+}
+}
+})
+
 }
 
-document.getElementById("positions").innerHTML = html
-
-} catch (error) {
-
-console.error("Dashboard error:", error)
-
 }
 
-}
-
-loadPortfolio()
+loadData()
