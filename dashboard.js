@@ -1,4 +1,3 @@
-let charts = []
 let marketData = {}
 let currentRange = 365
 
@@ -14,9 +13,7 @@ drawCharts()
 function setRange(days){
 
 currentRange = days
-
 document.getElementById("charts").innerHTML = ""
-charts = []
 
 drawCharts()
 
@@ -33,14 +30,13 @@ const asset = marketData[ticker]
 const dates = asset.dates.slice(-currentRange)
 const prices = asset.prices.slice(-currentRange)
 
-const canvas = document.createElement("canvas")
-canvas.height = 120
-
 const card = document.createElement("div")
 card.className = "card"
 
 const title = document.createElement("h3")
-title.innerText = ticker + " — $" + asset.latest_price
+title.innerText = ticker
+
+const canvas = document.createElement("canvas")
 
 card.appendChild(title)
 card.appendChild(canvas)
@@ -48,7 +44,7 @@ card.appendChild(canvas)
 container.appendChild(card)
 
 new Chart(canvas,{
-type:'line',
+type:"line",
 data:{
 labels:dates,
 datasets:[{
