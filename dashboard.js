@@ -1,25 +1,23 @@
-async function loadPortfolio(){
+async function loadPortfolio() {
 
-const response = await fetch("../data/market_data.json")
-const json = await response.json()
+try {
 
-document.getElementById("portfolio_value").innerHTML =
-"Portfolio Value: $" + json.portfolio_value
+const response = await fetch("data/market_data.json")
+const data = await response.json()
+
+console.log(data)
+
+document.getElementById("portfolio_value").innerText =
+"Portfolio Value: $" + data.portfolio_value
 
 let html = ""
 
-let labels = []
-let values = []
+for (const ticker in data.positions) {
 
-for(const ticker in json.positions){
-
-const p = json.positions[ticker]
-
-labels.push(ticker)
-values.push(p.value)
+const p = data.positions[ticker]
 
 html += `
-<div>
+<div style="margin-bottom:20px">
 
 <h3>${ticker}</h3>
 
@@ -35,23 +33,11 @@ Trend: ${p.trend}
 
 document.getElementById("positions").innerHTML = html
 
-drawChart(labels,values)
+} catch (error) {
+
+console.error("Dashboard error:", error)
 
 }
-
-function drawChart(labels,values){
-
-const ctx = document.getElementById("chart")
-
-new Chart(ctx,{
-type:'pie',
-data:{
-labels:labels,
-datasets:[{
-data:values
-}]
-}
-})
 
 }
 
