@@ -1,18 +1,48 @@
-.timeframe{
+body{
+margin:0;
+font-family:system-ui, sans-serif;
+background:#0f172a;
+color:white;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+padding:30px;
+}
+
+.controls{
 margin-bottom:20px;
 }
 
-.timeframe button{
-margin-right:10px;
-padding:6px 14px;
+.controls button{
+padding:8px 14px;
+margin-right:8px;
 background:#1e293b;
 border:none;
 border-radius:6px;
-color:#e2e8f0;
+color:white;
 cursor:pointer;
 }
 
-.timeframe button:hover{
+.controls button:hover{
 background:#38bdf8;
-color:#0f172a;
+color:black;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(400px,1fr));
+gap:25px;
+}
+
+.card{
+background:#1e293b;
+padding:20px;
+border-radius:12px;
+}
+
+.card canvas{
+width:100% !important;
+height:200px !important;
 }
