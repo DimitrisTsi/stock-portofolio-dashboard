@@ -1,0 +1,69 @@
+{
+  "updated": "2026-03-10T20:28:14.884323",
+  "portfolio_value": 3181.03,
+  "positions": {
+    "NVDA": {
+      "price": 184.77,
+      "shares": 2,
+      "value": 369.54,
+      "change_1d": 1.16,
+      "ma50": 185.8,
+      "ma200": 176.63,
+      "trend": "bullish"
+    },
+    "MSFT": {
+      "price": 405.76,
+      "shares": 1,
+      "value": 405.76,
+      "change_1d": -0.89,
+      "ma50": 433.83,
+      "ma200": 482.2,
+      "trend": "bearish"
+    },
+    "AMD": {
+      "price": 203.23,
+      "shares": 3,
+      "value": 609.69,
+      "change_1d": 0.27,
+      "ma50": 217.13,
+      "ma200": 189.52,
+      "trend": "bullish"
+    },
+    "BABA": {
+      "price": 136.85,
+      "shares": 4,
+      "value": 547.4,
+      "change_1d": 3.17,
+      "ma50": 156.53,
+      "ma200": 145.24,
+      "trend": "bullish"
+    },
+    "VUAA.L": {
+      "price": 131.42,
+      "shares": 5,
+      "value": 657.1,
+      "change_1d": 1.59,
+      "ma50": 132.58,
+      "ma200": 126.52,
+      "trend": "bullish"
+    },
+    "EUNL.DE": {
+      "price": 113.04,
+      "shares": 5,
+      "value": 565.18,
+      "change_1d": -0.24,
+      "ma50": 112.96,
+      "ma200": 107.43,
+      "trend": "bullish"
+    },
+    "SEMI.AS": {
+      "price": 13.18,
+      "shares": 2,
+      "value": 26.36,
+      "change_1d": 4.72,
+      "ma50": 12.9,
+      "ma200": 10.22,
+      "trend": "bullish"
+    }
+  }
+}
