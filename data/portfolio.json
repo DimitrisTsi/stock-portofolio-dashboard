@@ -1,0 +1,11 @@
+{
+  "positions": [
+    { "ticker": "NVDA", "shares": 2 },
+    { "ticker": "MSFT", "shares": 1 },
+    { "ticker": "AMD", "shares": 3 },
+    { "ticker": "BABA", "shares": 4 },
+    { "ticker": "VUAA.AS", "shares": 5 },
+    { "ticker": "EUNL.DE", "shares": 5 },
+    { "ticker": "LSMC.PA", "shares": 2 }
+  ]
+}
