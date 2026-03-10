@@ -13,6 +13,7 @@ drawCharts()
 function setRange(days){
 
 currentRange = days
+
 document.getElementById("charts").innerHTML = ""
 
 drawCharts()
@@ -43,21 +44,25 @@ card.appendChild(canvas)
 
 container.appendChild(card)
 
-new Chart(canvas,{
+const ctx = canvas.getContext("2d")
+
+new Chart(ctx,{
 type:"line",
 data:{
 labels:dates,
 datasets:[{
 data:prices,
+borderColor:"#38bdf8",
 borderWidth:2,
-fill:false
+pointRadius:0
 }]
 },
 options:{
 responsive:true,
 plugins:{legend:{display:false}},
 scales:{
-x:{display:false}
+x:{display:false},
+y:{display:true}
 }
 }
 })
