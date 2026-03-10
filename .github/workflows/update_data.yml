@@ -12,23 +12,30 @@ jobs:
 
     steps:
 
-      - uses: actions/checkout@v3
+    - name: Checkout repo
+      uses: actions/checkout@v3
 
-      - uses: actions/setup-python@v4
-        with:
-          python-version: 3.11
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.11
 
-      - run: pip install yfinance pandas
+    - name: Install dependencies
+      run: |
+        pip install yfinance pandas
 
-      - run: python scripts/fetch_market_data.py
+    - name: Run script
+      run: |
+        python scripts/fetch_market_data.py
 
-      - run: |
-              git config --global user.name "github-actions"
-              git config --global user.email "actions@github.com"
+    - name: Commit results
+      run: |
+        git config --global user.name "github-actions"
+        git config --global user.email "actions@github.com"
 
-              git add data/market_data.json
+        git add data/market_data.json
 
-              git diff --cached --quiet || (
-                git commit -m "update portfolio data"
-                git push
-              )
+        git diff --cached --quiet || (
+          git commit -m "update portfolio data"
+          git push
+        )
