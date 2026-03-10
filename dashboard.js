@@ -25,7 +25,6 @@ drawCharts()
 function setRange(days){
 
 currentRange = days
-
 document.getElementById("charts").innerHTML=""
 
 drawCharts()
@@ -78,20 +77,42 @@ datasets:[{
 data:prices,
 borderColor:"#38bdf8",
 borderWidth:2,
-pointRadius:0
+pointRadius:0,
+pointHoverRadius:5
 }]
 },
 
 options:{
+
 responsive:true,
+
+interaction:{
+mode:"index",
+intersect:false
+},
 
 plugins:{
 legend:{display:false},
+
 tooltip:{
+enabled:true,
+mode:"index",
+intersect:false,
+
 callbacks:{
-label:(context)=>"$"+context.parsed.y
+
+title:(context)=>{
+return context[0].label
+},
+
+label:(context)=>{
+return "Price: $" + context.parsed.y.toFixed(2)
 }
+
 }
+
+}
+
 },
 
 scales:{
