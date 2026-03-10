@@ -6,28 +6,34 @@ with open("data/portfolio.json") as f:
 
 tickers = config["tickers"]
 
+print("Downloading:", tickers)
+
+data = yf.download(tickers, period="1y", group_by="ticker")
+
 results = {}
 
 for ticker in tickers:
 
     try:
 
-        df = yf.download(ticker, period="1y")
+        df = data[ticker]["Close"].dropna()
 
         if df.empty:
-            print(f"No data for {ticker}")
+            print("No data:", ticker)
             continue
 
-        closes = df["Close"].dropna()
-
         results[ticker] = {
-            "dates": closes.index.strftime("%Y-%m-%d").tolist(),
-            "prices": closes.round(2).tolist(),
-            "latest_price": float(closes.iloc[-1])
+            "dates": df.index.strftime("%Y-%m-%d").tolist(),
+            "prices": df.round(2).tolist(),
+            "latest_price": float(df.iloc[-1])
         }
 
+        print("Loaded:", ticker)
+
     except Exception as e:
-        print(f"Failed {ticker}: {e}")
+        print("Error:", ticker, e)
 
 with open("data/market_data.json","w") as f:
     json.dump(results,f,indent=2)
+
+print("Saved market_data.json")
